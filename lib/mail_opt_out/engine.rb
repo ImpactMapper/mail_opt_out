@@ -7,8 +7,8 @@ module MailOptOut
     config.generators do |g|
       g.test_framework :rspec
     end
-    
-    #load envs
+
+    # load envs
     Dotenv::Railtie.load
   end
 end

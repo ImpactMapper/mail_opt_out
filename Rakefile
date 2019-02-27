@@ -4,6 +4,15 @@ rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
+ENV['DUMMY_APP_PATH']='spec/dummy'
+# ENV['ENGINE']='mail_opt_out'
+ENV['ENGINE_DB']='sqlite3'
+ENV['DISABLE_CREATE']='false'
+ENV['DISABLE_MIGRATE']='false'
+ENV['DATABASE_URL']='sqlite3::memory:'
+
+require 'rails/dummy/tasks'
+
 require 'rdoc/task'
 
 desc('Documentation stats and measurements')

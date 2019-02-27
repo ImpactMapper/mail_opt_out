@@ -111,6 +111,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-dummy (0.0.7)
+      rails
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     railties (5.2.2)
@@ -176,6 +178,7 @@ DEPENDENCIES
   dotenv-rails
   mail_opt_out!
   pry-byebug
+  rails-dummy
   rspec-rails
   rubocop-rails_config
   sqlite3
