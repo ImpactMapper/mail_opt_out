@@ -61,6 +61,8 @@ GEM
       dotenv (= 2.7.1)
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
+    fabrication (2.20.1)
+    ffaker (2.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.5.3)
@@ -176,6 +178,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   dotenv-rails
+  fabrication
+  ffaker
   mail_opt_out!
   pry-byebug
   rails-dummy
