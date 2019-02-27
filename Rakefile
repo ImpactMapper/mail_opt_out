@@ -13,6 +13,21 @@ ENV['DATABASE_URL']='sqlite3::memory:'
 
 require 'rails/dummy/tasks'
 
+[
+  'spec/dummy/app/assets/config/manifest.js',
+  'spec/dummy/config/puma.rb',
+  'spec/dummy/config/spring.rb',
+].each do |file_name|
+  `rm -vf #{file_name}`
+end 
+
+[
+  'spec/dummy/app/assets/javascripts',
+  'spec/dummy/app/assets/stylesheets',
+].each do |dir_name|
+  `rm -rvf #{dir_name}`
+end 
+
 require 'rdoc/task'
 
 desc('Documentation stats and measurements')
