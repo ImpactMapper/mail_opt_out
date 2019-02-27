@@ -19,9 +19,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '~> 5.2.2'
 
-  spec.add_development_dependency 'sqlite3'
+  spec.add_development_dependency 'sqlite3', '~> 1.3.6' # https://github.com/rails/rails/pull/35154
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop-rails_config'
   spec.add_development_dependency 'fabrication'
   spec.add_development_dependency 'ffaker'  
+  spec.add_development_dependency 'with_model'
 end
