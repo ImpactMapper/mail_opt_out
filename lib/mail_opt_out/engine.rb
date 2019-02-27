@@ -1,3 +1,5 @@
+require 'dotenv-rails'
+
 module MailOptOut
   class Engine < ::Rails::Engine
     isolate_namespace MailOptOut
@@ -5,5 +7,8 @@ module MailOptOut
     config.generators do |g|
       g.test_framework :rspec
     end
+    
+    #load envs
+    Dotenv::Railtie.load
   end
 end
