@@ -1,0 +1,31 @@
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml
+
+AllCops:
+  TargetRubyVersion: 2.4
+  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
+  # to ignore them, so only the ones explicitly set in this file are enabled.
+  DisabledByDefault: true
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+
+Rails:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
+
+Style/BracesAroundHashParameters:
+  Enabled: false
