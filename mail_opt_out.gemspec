@@ -26,4 +26,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'fabrication'
   spec.add_development_dependency 'ffaker'  
   spec.add_development_dependency 'with_model'
+  
+  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'pry-byebug'
+  spec.add_development_dependency 'dotenv-rails'
+  spec.add_development_dependency 'jsonapi-rspec'
+  spec.add_development_dependency 'rails-dummy'
+  spec.add_development_dependency 'rspec'
 end

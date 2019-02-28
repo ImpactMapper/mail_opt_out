@@ -4,3 +4,5 @@ pkg/
 rdoc
 spec/dummy/log
 spec/dummy/tmp
+*.sqlite3
+spec/dummy/db/migrate/*_create_mail_opt_out_mail_list_subscriptions.mail_opt_out.rb

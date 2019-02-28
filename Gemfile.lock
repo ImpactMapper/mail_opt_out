@@ -138,6 +138,10 @@ GEM
       activerecord (>= 5.0)
       activesupport (>= 5.0)
       i18n
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -199,6 +203,7 @@ DEPENDENCIES
   mail_opt_out!
   pry-byebug
   rails-dummy
+  rspec
   rspec-rails
   rubocop-rails_config
   sqlite3 (~> 1.3.6)
