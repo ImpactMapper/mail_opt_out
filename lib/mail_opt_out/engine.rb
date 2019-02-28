@@ -1,4 +1,7 @@
 require 'dotenv-rails'
+require 'jsonapi'
+
+JSONAPI::Rails.install!
 
 module MailOptOut
   class Engine < ::Rails::Engine

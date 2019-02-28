@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['spec/**/*']
 
   spec.add_dependency 'rails', '~> 5.2.2'
+  spec.add_dependency 'jsonapi.rb'
 
   spec.add_development_dependency 'sqlite3', '~> 1.3.6' # https://github.com/rails/rails/pull/35154
   spec.add_development_dependency 'rspec-rails'
