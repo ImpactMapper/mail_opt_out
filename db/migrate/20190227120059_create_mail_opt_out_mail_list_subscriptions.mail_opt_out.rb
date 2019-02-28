@@ -10,6 +10,6 @@ class CreateMailOptOutMailListSubscriptions < ActiveRecord::Migration[5.2]
     end
 
     # Shorten name
-    add_index :mail_opt_out_mail_list_subscriptions, [:user_type, :user_id], name: :index_mail_subscriptions_on_polymorphic_user
+    add_index :mail_list_subscriptions, [:user_type, :user_id], name: :index_mail_subscriptions_on_polymorphic_user
   end
 end
