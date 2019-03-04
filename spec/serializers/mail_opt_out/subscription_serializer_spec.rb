@@ -5,20 +5,42 @@ module MailOptOut
     include_context 'with model user'
     include_context 'with an user'
 
-    let(:subscription) { Fabricate.build(:subscription, user: user, list: 'Notification System') }
+    let(:subscription) { Fabricate.build(:subscription, user: user, list: list) }
 
     subject { described_class.new(subscription) }
 
-    it do
-      expect(subject.serializable_hash).to eql(
-        {
-          data: {
-            attributes: {
-              list: 'Notification System'
-          },
-         id: nil,
-         type: :subscription }
-        })
+    context 'with list' do
+      let(:list) { nil }
+
+      it do
+        expect(subject.serializable_hash).to eql(
+          {
+            data: {
+              attributes: {
+                list: nil
+            },
+            id: nil,
+            type: :subscription }
+          }
+        )
+      end
+    end
+
+    context 'without list' do
+      let(:list) { Fabricate.build(:list, name: 'Notification System') }
+
+      it do
+        expect(subject.serializable_hash).to eql(
+          {
+            data: {
+              attributes: {
+                list: 'Notification System'
+            },
+            id: nil,
+            type: :subscription }
+          }
+        )
+      end
     end
   end
 end

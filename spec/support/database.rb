@@ -7,8 +7,15 @@ ActiveRecord::Schema.define do
   self.verbose = false
 
   create_table :mail_opt_out_subscriptions do |t|
-    t.string :list
+    t.references :list
     t.references :user, polymorphic: true
+    t.timestamps
+  end
+
+  create_table :mail_opt_out_lists do |t|
+    t.string :number
+    t.string :name
+
     t.timestamps
   end
 end

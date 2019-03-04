@@ -4,9 +4,11 @@ module MailOptOut
   class SubscriptionSerializer
     include FastJsonapi::ObjectSerializer
 
-    attributes :list
+    attribute :list do |object|
+      object.list&.name
+    end
 
-    def opt_out
+    def opt_in
       true
     end
   end
