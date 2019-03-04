@@ -1,7 +1,7 @@
 require 'fast_jsonapi'
 
 module MailOptOut
-  class MailListSubscriptionSerializer
+  class SubscriptionSerializer
     include FastJsonapi::ObjectSerializer
 
     attributes :list

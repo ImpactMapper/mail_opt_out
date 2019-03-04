@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module MailOptOut
-  RSpec.describe MailListSubscription, type: :model do
+  RSpec.describe Subscription, type: :model do
     with_model :User do
       table do |t|
         t.string :name
@@ -21,11 +21,11 @@ module MailOptOut
           email: FFaker::Internet.email
         })
       end
-      let(:mail_list_subscription) { Fabricate.build(:mail_list_subscription, user: user) }
+      let(:subscription) { Fabricate.build(:subscription, user: user) }
       it do
-        expect(mail_list_subscription).to be_valid
+        expect(subscription).to be_valid
         expect {
-          mail_list_subscription.save!
+          subscription.save!
         }.to_not raise_error
       end
     end

@@ -26,8 +26,8 @@ module MailOptOut
 
     RSpec.shared_context 'with a subscription' do
       include_context 'with an user'
-      let!(:mail_list_subscription) do
-        Fabricate.create(:mail_list_subscription, user: user, list: 'Notification System')
+      let!(:subscription) do
+        Fabricate.create(:subscription, user: user, list: 'Notification System')
       end
     end
 
@@ -72,7 +72,7 @@ module MailOptOut
             expect(response_json['data'][0]).to eql(
               {
                 'id'   =>  user_id.to_s,
-                'type' => 'mail_list_subscription',
+                'type' => 'subscription',
                 'attributes' => {
                   'list' => 'Notification System'
                  }
@@ -151,7 +151,7 @@ module MailOptOut
           expect {
             expect(subject).to eql(404)
           }.to_not change {
-            MailListSubscription.count
+            Subscription.count
           }
         end
       end
@@ -165,7 +165,7 @@ module MailOptOut
           expect {
             expect(subject).to eql(204)
           }.to change {
-            MailListSubscription.count
+            Subscription.count
           }.by(-1)
         end
       end

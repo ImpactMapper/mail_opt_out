@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module MailOptOut
-  RSpec.describe MailListSubscriptionSerializer, type: :serializer do
+  RSpec.describe SubscriptionSerializer, type: :serializer do
     with_model :User do
       table do |t|
         t.string :name
@@ -20,9 +20,9 @@ module MailOptOut
         email: FFaker::Internet.email
       })
     end
-    let(:mail_list_subscription) { Fabricate.build(:mail_list_subscription, user: user, list: 'Notification System') }
+    let(:subscription) { Fabricate.build(:subscription, user: user, list: 'Notification System') }
 
-    subject { described_class.new(mail_list_subscription) }
+    subject { described_class.new(subscription) }
 
     it do
       expect(subject.serializable_hash).to eql(
@@ -32,7 +32,7 @@ module MailOptOut
               list: 'Notification System'
           },
          id: nil,
-         type: :mail_list_subscription }
+         type: :subscription }
         })
     end
   end

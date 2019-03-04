@@ -6,12 +6,12 @@ module MailOptOut
 
     # GET /users/:user_id/subscriptions
     def index
-      render jsonapi: MailListSubscription.where({ user: @user }).all
+      render jsonapi: Subscription.where({ user: @user }).all
     end
 
     # DELETE /users/:user_id/subscriptions/unsubscribe
     def unsubscribe
-      subscription = MailListSubscription.where({ user: @user, list: params[:list] }).take!
+      subscription = Subscription.where({ user: @user, list: params[:list] }).take!
       subscription.destroy
 
       head :no_content
@@ -19,7 +19,7 @@ module MailOptOut
 
     # POST /users/:user_id/subscriptions/subscribe
     def subscribe
-      subscription = MailListSubscription.find_or_create_by({ user: @user, list: create_params[:list] })
+      subscription = Subscription.find_or_create_by({ user: @user, list: create_params[:list] })
 
       if subscription.valid?
         render jsonapi: subscription, status: :created
