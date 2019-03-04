@@ -2,34 +2,7 @@ require 'rails_helper'
 
 module MailOptOut
   RSpec.describe SubscriptionsController, type: :request do
-    with_model :User do
-      table do |t|
-        t.string :name
-        t.string :email
-        t.timestamps
-      end
-
-      model do
-        validates :email, presence: true
-      end
-    end
-
-    RSpec.shared_context 'with an user' do
-      let!(:user) do
-        User.create!({
-          name:  FFaker::Name.name,
-          email: FFaker::Internet.email
-        })
-      end
-      let(:user_id) { user.id }
-    end
-
-    RSpec.shared_context 'with a subscription' do
-      include_context 'with an user'
-      let!(:subscription) do
-        Fabricate.create(:subscription, user: user, list: 'Notification System')
-      end
-    end
+    include_context 'with model user'
 
     describe 'GET /users/:user_id/subscriptions' do
       let(:params) { {} }
