@@ -13,7 +13,7 @@ require "action_controller/railtie"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
-# NOTE: No clue why that is required, but otherwise rails terminal commands fail miserably 
+# NOTE: No clue why that is required, but otherwise rails terminal commands fail miserably
 require 'rspec'
 require 'jsonapi/rspec'
 

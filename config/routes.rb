@@ -1,7 +1,7 @@
 MailOptOut::Engine.routes.draw do
   resources :users, defaults: { format: :jsonapi } do
     resources :subscriptions, only: [:index] do
-      member do
+      collection do
         post :subscribe
         delete :unsubscribe
       end
