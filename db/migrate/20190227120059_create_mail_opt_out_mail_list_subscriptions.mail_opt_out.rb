@@ -1,7 +1,6 @@
 class CreateMailOptOutMailListSubscriptions < ActiveRecord::Migration[5.2]
   def change
     create_table :mail_list_subscriptions do |t|
-      t.string :email, index: true
       t.string :list, index: true
 
       t.references :user, polymorphic: true
