@@ -33,6 +33,40 @@ module MailOptOut
       end
     end
 
+    context 'with a list' do
+      let!(:list) { Fabricate.create(:list, name: list_name, number: list_id) }
+
+      describe '#opt_out' do
+        context 'when opted in' do
+          let(:list_name) { 'Notifcation System' }
+          let(:email)     { 'existing@example.org' }
+
+          before do
+            expect(subject).to receive(:get_member).and_return({ 'id' => '5d3f7d8e534a123e3029a3f3b9761de5' })
+          end
+
+          it 'should update the member' do
+            VCR.use_cassette('update_existing_member') do
+              expect(subject.opt_out(email: email, list_name: list_name)).to be_truthy
+            end
+          end
+        end
+      end
+
+      describe '#opt_in' do
+        context 'no member yet' do
+          let(:list_name) { 'Notifcation System' }
+          let(:email)     { 'unknown@example.org' }
+
+          it 'should opted in the member' do
+            VCR.use_cassette('create_unexisting_member') do
+              expect(subject.opt_in(email: email, list_name: list_name)).to be_truthy
+            end
+          end
+        end
+      end
+    end
+
     describe '#create_member' do
       context 'none existing member' do
         let(:email) { 'unknown@example.org' }
