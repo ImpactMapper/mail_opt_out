@@ -3,6 +3,8 @@
 module MailOptOut
   class Services
     class Mailchimp
+      include MailOptOut::Service
+
       def initialize(options = {})
         @request = ::Gibbon::Request.new(api_key: options[:api_key] || ENV['MAILCHIMP_API_KEY'])
       end
