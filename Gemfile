@@ -13,4 +13,5 @@ gemspec
 
 group :test do 
   gem 'gibbon'
+  gem 'rspec_junit_formatter'
 end 
