@@ -27,7 +27,16 @@ module MailOptOut
         list = List.where({ name: list_name }).take
         return unless list&.number
 
-        return true if create_member(email: email, list_id: list.number)
+        result = create_member(email: email, list_id: list.number)
+        case result
+        when :created
+          return true
+        when :invalid, :forgotten
+          return false
+        when :exists, :not_allowed
+          # Do Nothing
+        end
+        return unless result == :exists
 
         member = get_member(email: email, list_id: list.number)
         return unless member
@@ -57,10 +66,15 @@ module MailOptOut
 
       def create_member(email:, list_id:)
         request.lists(list_id).members.create(body: { email_address: email, status: 'subscribed' })
-        true
+        :created
       rescue Gibbon::MailChimpError => error
-        return false if error.title == 'Member Exists'
-        return false if error.title == 'Invalid Resource' # detail="Please provide a valid email address."
+        return :exists if error.title == 'Member Exists'
+        # detail="Please provide a valid email address."
+        return :invalid if error.title == 'Invalid Resource'
+        # detail="xxxx was permanently deleted"
+        return :forgotten if error.title == 'Forgotten Email Not Subscribed'
+        # detail="The requested method and resource are not compatible.
+        return :not_allowed if error.title == 'Method Not Allowed'
         raise
       end
 

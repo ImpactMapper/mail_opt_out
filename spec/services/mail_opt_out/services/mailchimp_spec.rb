@@ -84,7 +84,7 @@ module MailOptOut
 
           it do
             VCR.use_cassette('create_existing_member') do
-              expect(subject.send(:create_member, email: email, list_id: list_id)).to be_falsy
+              expect(subject.send(:create_member, email: email, list_id: list_id)).to eql(:exists)
             end
           end
         end
