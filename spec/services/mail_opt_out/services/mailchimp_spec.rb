@@ -5,6 +5,7 @@ require 'gibbon'
 module MailOptOut
   RSpec.describe Services::Mailchimp do
     let(:api_key) { '45285254324265220780377042800733-us20' }
+    let(:list_id) { '8330ABCd4b' }
 
     describe '.discoverable?' do
       context 'with env set' do
@@ -33,11 +34,81 @@ module MailOptOut
     end
 
     describe '#unsubscribes' do
-      let(:list_id) { '8330ABCd4b' }
-
       it do
         VCR.use_cassette('unsubscribes') do
           expect(subject.unsubscribes(list_id: list_id)).to eql([{ email: 'john.doe@example.org' }])
+        end
+      end
+    end
+
+    describe '#create_member' do
+      context 'none existing member' do
+        let(:email) { 'unknown@example.org' }
+
+        it do
+          VCR.use_cassette('create_unexisting_member') do
+            expect(subject.create_member(email: email, list_id: list_id)).to be_truthy
+          end
+        end
+      end
+
+      context 'an existing member' do
+        let(:email) { 'existing@example.org' }
+
+        it do
+          VCR.use_cassette('create_existing_member') do
+            expect(subject.create_member(email: email, list_id: list_id)).to be_falsy
+          end
+        end
+      end
+    end
+
+    describe '#get_member' do
+      context 'none existing member' do
+        let(:email) { 'unknown@example.org' }
+
+        it do
+          VCR.use_cassette('get_unexisting_member') do
+            expect(subject.get_member(email: email, list_id: list_id)).to be_nil
+          end
+        end
+      end
+
+      context 'an existing member' do
+        let(:email) { 'existing@example.org' }
+
+        it do
+          VCR.use_cassette('get_existing_member') do
+            expect(subject.get_member(email: email, list_id: list_id)).to eql(
+              {
+                email: 'existing@example.org',
+                id: '5d3f7d8e534a123e3029a3f3b9761de5',
+                status: 'subscribed'
+              }
+            )
+          end
+        end
+      end
+    end
+
+    describe '#update_member' do
+      context 'none existing member' do
+        let(:member_id) { '5d3f7d8e534axxxe3029a3f3b9761de5' }
+
+        it do
+          VCR.use_cassette('update_unexisting_member') do
+            expect(subject.update_member(list_id: list_id, member_id: member_id)).to be_falsy
+          end
+        end
+      end
+
+      context 'an existing member' do
+        let(:member_id) { '5d3f7d8e534a123e3029a3f3b9761de5' }
+
+        it do
+          VCR.use_cassette('update_existing_member') do
+            expect(subject.update_member(list_id: list_id, member_id: member_id)).to be_truthy
+          end
         end
       end
     end

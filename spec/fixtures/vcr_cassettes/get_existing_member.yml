@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/20f3fa8d271a6a052a2d055ee3bcacbd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic YXBpa2V5OmU5MWNiY2FkMGM3MGM5ZTIyNGEzMDJkNzM2YmNkZDA0LXVzOQ==
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - 3a8a1400-5881-47a0-9b3a-fd06631e8d51
+      Link:
+      - <https://us20.api.mailchimp.com/schema/3.0/Lists/Members/Instance.json>; rel="describedBy",
+        <https://us20.admin.mailchimp.com/lists/members/view?id=587208085>; rel="dashboard"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 05 Mar 2019 10:31:58 GMT
+      Content-Length:
+      - '2832'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - _AVESTA_ENVIRONMENT=prod; path=/
+      - _mcid=1.f2c7b3b8168db57a9f3f603d99ddc635; expires=Wed, 04-Mar-2020 10:31:58
+        GMT; Max-Age=31536000; path=/; domain=.mailchimp.com
+    body:
+      encoding: UTF-8
+      string: '{"id":"5d3f7d8e534a123e3029a3f3b9761de5","email_address":"existing@example.org","unique_email_id":"003bf166ec","email_type":"html","status":"subscribed","merge_fields":{"FNAME":"","LNAME":"","MMERGE3":""},"stats":{"avg_open_rate":0,"avg_click_rate":0},"ip_signup":"","timestamp_signup":"","ip_opt":"213.162.213.82","timestamp_opt":"2019-03-04T14:26:08+00:00","member_rating":2,"last_changed":"2019-03-05T09:52:12+00:00","language":"","vip":false,"email_client":"","location":{"latitude":0,"longitude":0,"gmtoff":0,"dstoff":0,"country_code":"","timezone":""},"tags_count":0,"tags":[],"list_id":"8330ABCd4b","_links":[{"rel":"self","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5","method":"GET","targetSchema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/Response.json"},{"rel":"parent","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members","method":"GET","targetSchema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/CollectionResponse.json","schema":"https://us20.api.mailchimp.com/schema/3.0/CollectionLinks/Lists/Members.json"},{"rel":"update","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5","method":"PATCH","targetSchema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/Response.json","schema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/PATCH.json"},{"rel":"upsert","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5","method":"PUT","targetSchema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/Response.json","schema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/PUT.json"},{"rel":"delete","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5","method":"DELETE"},{"rel":"activity","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5/activity","method":"GET","targetSchema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/Activity/Response.json"},{"rel":"goals","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5/goals","method":"GET","targetSchema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/Goals/Response.json"},{"rel":"notes","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5/notes","method":"GET","targetSchema":"https://us20.api.mailchimp.com/schema/3.0/Definitions/Lists/Members/Notes/CollectionResponse.json"},{"rel":"delete_permanent","href":"https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members/5d3f7d8e534a123e3029a3f3b9761de5/actions/delete-permanent","method":"POST"}]}'
+    http_version:
+  recorded_at: Tue, 05 Mar 2019 10:31:23 GMT
+recorded_with: VCR 4.0.0

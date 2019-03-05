@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://us20.api.mailchimp.com/3.0/lists/8330ABCd4b/members
+    body:
+      encoding: UTF-8
+      string: '{"email_address":"existing@example.org","status":"subscribed"}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic YXBpa2V5OmU5MWNiY2FkMGM3MGM5ZTIyNGEzMDJkNzM2YmNkZDA0LXVzOQ==
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - openresty
+      Content-Type:
+      - application/problem+json; charset=utf-8
+      Content-Length:
+      - '225'
+      X-Request-Id:
+      - 3cbb12c9-3270-4ca1-90dc-f437311b0c67
+      Link:
+      - <https://us20.api.mailchimp.com/schema/3.0/ProblemDetailDocument.json>; rel="describedBy"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 05 Mar 2019 10:28:54 GMT
+      Connection:
+      - close
+      Set-Cookie:
+      - _AVESTA_ENVIRONMENT=prod; path=/
+      - _mcid=1.bedc6f593fb68858c09f583faacfbf48; expires=Wed, 04-Mar-2020 10:28:54
+        GMT; Max-Age=31536000; path=/; domain=.mailchimp.com
+    body:
+      encoding: ASCII-8BIT
+      string: '{"type":"http://developer.mailchimp.com/documentation/mailchimp/guides/error-glossary/","title":"Member
+        Exists","status":400,"detail":"existing@example.org is already a list member.
+        Use PUT to insert or update list members.","instance":"3cbb12c9-3270-4ca1-90dc-f437311b0c67"}'
+    http_version:
+  recorded_at: Tue, 05 Mar 2019 10:28:19 GMT
+recorded_with: VCR 4.0.0

@@ -19,6 +19,35 @@ module MailOptOut
         end
       end
 
+      def update_member(list_id:, member_id:, status: 'unsubscribed')
+        request.lists(list_id).members(member_id).update(body: { status: status })
+        true
+      rescue Gibbon::MailChimpError => error
+        return false if error.title == 'Resource Not Found'
+        raise
+      end
+
+      def create_member(email:, list_id:)
+        request.lists(list_id).members.create(body: { email_address: email, status: 'subscribed' })
+        true
+      rescue Gibbon::MailChimpError => error
+        return false if error.title == 'Member Exists'
+        raise
+      end
+
+      def get_member(email:, list_id:)
+        lower_case_md5_hashed_email_address = Digest::MD5.hexdigest(email)
+        response = request.lists(list_id).members(lower_case_md5_hashed_email_address).retrieve.body
+        {
+          id: response['id'],
+          email: response['email_address'],
+          status: response['status']
+        }
+      rescue Gibbon::MailChimpError => error
+        return if error.title == 'Resource Not Found'
+        raise
+      end
+
       def unsubscribes(list_id:)
         params = { status: 'unsubscribed', fields: 'members.email_address,members.status' }
         response = request.lists(list_id).members.retrieve(params: params).body['members']
