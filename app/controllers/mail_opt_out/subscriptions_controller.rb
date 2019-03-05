@@ -33,16 +33,15 @@ module MailOptOut
     private
 
     def set_create_list
-      return if create_params[:list].blank?
       list(create_params[:list])
     end
 
     def set_list
-      return if params[:list].blank?
       list(params[:list])
     end
 
     def list(name)
+      name ||= 'Default List'
       @list = List.find_or_create_by!({ name: name })
     end
 

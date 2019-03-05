@@ -102,7 +102,7 @@ module MailOptOut
           it do
             expect(subject).to eql(201)
             expect(response_json['data'])
-              .to have_attribute(:list).with_value(nil)
+              .to have_attribute(:list).with_value('Default List')
           end
         end
       end
