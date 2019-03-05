@@ -16,6 +16,8 @@ module MailOptOut
       subscription = Subscription.where({ user: @user, list: @list }).take!
       subscription.destroy
 
+      MailOptOut.opt_out(email: @user.email, list_name: @list.name)
+
       head :no_content
     end
 
@@ -24,6 +26,7 @@ module MailOptOut
       subscription = Subscription.find_or_create_by({ user: @user, list: @list })
 
       if subscription.valid?
+        MailOptOut.opt_in(email: @user.email, list_name: @list.name)
         render jsonapi: subscription, status: :created
       else
         render jsonapi_errors: subscription.errors, status: :unprocessable_entity
