@@ -19,6 +19,8 @@ module MailOptOut
         end
       end
 
+      private
+
       def update_member(list_id:, member_id:, status: 'unsubscribed')
         request.lists(list_id).members(member_id).update(body: { status: status })
         true

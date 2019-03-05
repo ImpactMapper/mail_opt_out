@@ -39,7 +39,7 @@ module MailOptOut
 
         it do
           VCR.use_cassette('create_unexisting_member') do
-            expect(subject.create_member(email: email, list_id: list_id)).to be_truthy
+            expect(subject.send(:create_member, email: email, list_id: list_id)).to be_truthy
           end
         end
       end
@@ -49,7 +49,7 @@ module MailOptOut
 
         it do
           VCR.use_cassette('create_existing_member') do
-            expect(subject.create_member(email: email, list_id: list_id)).to be_falsy
+            expect(subject.send(:create_member, email: email, list_id: list_id)).to be_falsy
           end
         end
       end
@@ -61,7 +61,7 @@ module MailOptOut
 
         it do
           VCR.use_cassette('get_unexisting_member') do
-            expect(subject.get_member(email: email, list_id: list_id)).to be_nil
+            expect(subject.send(:get_member, email: email, list_id: list_id)).to be_nil
           end
         end
       end
@@ -71,7 +71,7 @@ module MailOptOut
 
         it do
           VCR.use_cassette('get_existing_member') do
-            expect(subject.get_member(email: email, list_id: list_id)).to eql(
+            expect(subject.send(:get_member, email: email, list_id: list_id)).to eql(
               {
                 email: 'existing@example.org',
                 id: '5d3f7d8e534a123e3029a3f3b9761de5',
@@ -89,7 +89,7 @@ module MailOptOut
 
         it do
           VCR.use_cassette('update_unexisting_member') do
-            expect(subject.update_member(list_id: list_id, member_id: member_id)).to be_falsy
+            expect(subject.send(:update_member, list_id: list_id, member_id: member_id)).to be_falsy
           end
         end
       end
@@ -99,7 +99,7 @@ module MailOptOut
 
         it do
           VCR.use_cassette('update_existing_member') do
-            expect(subject.update_member(list_id: list_id, member_id: member_id)).to be_truthy
+            expect(subject.send(:update_member, list_id: list_id, member_id: member_id)).to be_truthy
           end
         end
       end
