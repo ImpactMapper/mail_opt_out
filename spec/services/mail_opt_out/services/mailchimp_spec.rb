@@ -33,14 +33,6 @@ module MailOptOut
       end
     end
 
-    describe '#unsubscribes' do
-      it do
-        VCR.use_cassette('unsubscribes') do
-          expect(subject.unsubscribes(list_id: list_id)).to eql([{ email: 'john.doe@example.org' }])
-        end
-      end
-    end
-
     describe '#create_member' do
       context 'none existing member' do
         let(:email) { 'unknown@example.org' }

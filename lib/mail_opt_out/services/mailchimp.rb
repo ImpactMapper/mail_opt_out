@@ -48,16 +48,6 @@ module MailOptOut
         raise
       end
 
-      def unsubscribes(list_id:)
-        params = { status: 'unsubscribed', fields: 'members.email_address,members.status' }
-        response = request.lists(list_id).members.retrieve(params: params).body['members']
-        response.map do |record|
-          {
-            email: record['email_address']
-          }
-        end
-      end
-
       def self.discoverable?
         !!(defined?(::Gibbon) && ENV['MAILCHIMP_API_KEY'])
       end
