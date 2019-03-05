@@ -1,6 +1,7 @@
 require 'mail_opt_out/engine'
 
 require 'mail_opt_out/service'
+require 'mail_opt_out/services/base'
 require 'mail_opt_out/services/mailchimp'
 
 module MailOptOut
@@ -12,7 +13,7 @@ module MailOptOut
   end
 
   def self.discover_services
-    Dir['./mail_opt_out/services/*.rb'].each do |service|
+    Service.subclasses.each do |service|
       services << service.new if service.discoverable?
     end
   end

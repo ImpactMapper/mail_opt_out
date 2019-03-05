@@ -1,9 +1,13 @@
 # https://github.com/amro/gibbon
 
 module MailOptOut
-  class Services
-    class Mailchimp
-      include MailOptOut::Service
+  module Services
+    class Mailchimp < MailOptOut::Service
+      include Base
+
+      def self.discoverable?
+        !!(defined?(::Gibbon) && ENV['MAILCHIMP_API_KEY'])
+      end
 
       def initialize(options = {})
         @request = ::Gibbon::Request.new(api_key: options[:api_key] || ENV['MAILCHIMP_API_KEY'])
@@ -37,7 +41,7 @@ module MailOptOut
           {
             id:  record['id'],
             name: record['name'],
-          }
+          }.with_indifferent_access
         end
       end
 
@@ -56,6 +60,7 @@ module MailOptOut
         true
       rescue Gibbon::MailChimpError => error
         return false if error.title == 'Member Exists'
+        return false if error.title == 'Invalid Resource' # detail="Please provide a valid email address."
         raise
       end
 
@@ -66,17 +71,11 @@ module MailOptOut
           id: response['id'],
           email: response['email_address'],
           status: response['status']
-        }
+        }.with_indifferent_access
       rescue Gibbon::MailChimpError => error
         return if error.title == 'Resource Not Found'
         raise
       end
-
-      def self.discoverable?
-        !!(defined?(::Gibbon) && ENV['MAILCHIMP_API_KEY'])
-      end
-
-      private
 
       attr_reader :request, :list_id
     end
