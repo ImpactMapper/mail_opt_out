@@ -5,8 +5,9 @@ require 'mail_opt_out/services/base'
 require 'mail_opt_out/services/mailchimp'
 
 module MailOptOut
-  mattr_accessor :services
+  mattr_accessor :services, :user_class
   self.services = []
+  self.user_class ||= 'User'
 
   def self.sync
     services.each(&:sync)
