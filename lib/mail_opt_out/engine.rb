@@ -1,4 +1,8 @@
-require 'dotenv-rails'
+begin
+  require 'dotenv-rails'
+rescue LoadError
+end 
+
 require 'jsonapi'
 
 JSONAPI::Rails.install!
@@ -17,6 +21,6 @@ module MailOptOut
     end
 
     # load envs
-    Dotenv::Railtie.load
+    Dotenv::Railtie.load if defined?(::Dotenv)
   end
 end
