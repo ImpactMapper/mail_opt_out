@@ -1,7 +1,7 @@
 begin
   require 'dotenv-rails'
 rescue LoadError
-end 
+end
 
 require 'jsonapi'
 
