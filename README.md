@@ -137,7 +137,7 @@ mount MailOptOut::Engine => '/'
 `bundle exec rails generate migration CreateMailOptOutLists`
 
 ```ruby
-class CreateMailOptOutLists < ActiveRecord::Migration[5.2]
+class CreateMailOptOutLists < ActiveRecord::Migration
   def change
     create_table :mail_opt_out_lists do |t|
       t.string :number
@@ -156,7 +156,7 @@ bundle exec rails generate migration CreateMailOptOutSubscriptions
 ```
 
 ```ruby
-class CreateMailOptOutSubscriptions < ActiveRecord::Migration[5.2]
+class CreateMailOptOutSubscriptions < ActiveRecord::Migration
   def change
     create_table :mail_opt_out_subscriptions do |t|
       t.references :list

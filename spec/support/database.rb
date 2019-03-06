@@ -9,7 +9,7 @@ ActiveRecord::Schema.define do
   create_table :mail_opt_out_subscriptions do |t|
     t.references :list
     t.references :user, polymorphic: true
-    t.timestamps
+    t.timestamps null: false
   end
 
   create_table :mail_opt_out_lists do |t|
@@ -18,6 +18,6 @@ ActiveRecord::Schema.define do
     t.text :description
     t.boolean :published, default: false
 
-    t.timestamps
+    t.timestamps null: false
   end
 end

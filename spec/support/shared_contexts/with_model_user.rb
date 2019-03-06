@@ -3,7 +3,7 @@ RSpec.shared_context 'with model user' do
     table do |t|
       t.string :name
       t.string :email
-      t.timestamps
+      t.timestamps null: false
     end
 
     model do

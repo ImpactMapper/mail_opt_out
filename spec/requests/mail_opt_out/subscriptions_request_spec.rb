@@ -10,7 +10,7 @@ module MailOptOut
       subject do
         # routes(Engine.routes, '/')
         # get(user_subscriptions_path(user_id: user_id), params: params)
-        get "/users/#{user_id}/subscriptions", params: params
+        get "/users/#{user_id}/subscriptions", params
       end
 
       context 'without an user' do
@@ -31,9 +31,9 @@ module MailOptOut
               expect(response_json['errors'][0]).to eql(
                 {
                   'status' => '404',
-                  'source' => 'User',
+                  'source' => nil,
                   'title'  => 'Not Found',
-                  'detail' => { 'id' => user_id.to_s }
+                  'detail' => nil
                 }
               )
             end
@@ -64,7 +64,7 @@ module MailOptOut
       subject do
         # routes(Engine.routes, '/')
         # post(subscribe_user_subscriptions_path(user_id: user_id), params: params)
-        post "/users/#{user_id}/subscriptions/subscribe", params: params
+        post "/users/#{user_id}/subscriptions/subscribe", params
       end
 
       context 'without a payload' do
@@ -116,7 +116,7 @@ module MailOptOut
       subject do
         # routes(Engine.routes, '/')
         # post(unsubscribe_user_subscriptions_path(user_id: user_id), params: params)
-        delete "/users/#{user_id}/subscriptions/unsubscribe", params: params
+        delete "/users/#{user_id}/subscriptions/unsubscribe", params
       end
 
       context 'without a subscription' do

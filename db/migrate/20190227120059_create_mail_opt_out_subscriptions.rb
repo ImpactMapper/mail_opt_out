@@ -1,4 +1,4 @@
-class CreateMailOptOutSubscriptions < ActiveRecord::Migration[5.2]
+class CreateMailOptOutSubscriptions < ActiveRecord::Migration
   def change
     create_table :mail_opt_out_subscriptions do |t|
       t.references :list

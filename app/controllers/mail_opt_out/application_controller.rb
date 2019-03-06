@@ -1,7 +1,7 @@
 require 'jsonapi'
 
 module MailOptOut
-  class ApplicationController < ActionController::API
+  class ApplicationController < ActionController::Base
     include JSONAPI::Errors
     include JSONAPI::Filtering
 
@@ -26,8 +26,8 @@ module MailOptOut
         error = {
           status: '404',
           title: Rack::Utils::HTTP_STATUS_CODES[404],
-          source: exception&.model,
-          detail: { id: exception&.id }
+          # source: exception&.model,
+          # detail: { id: exception&.id }
         }
         render jsonapi_errors: [error], status: :not_found
       end

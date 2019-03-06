@@ -2,9 +2,9 @@
 
 ```
 cd spec/dummy/
-bundle exec rails railties:install:migrations
-bundle exec rails db:migrate
-bundle exec rails db:seed
+bundle exec rake railties:install:migrations
+bundle exec rake db:migrate
+bundle exec rake db:seed
 ```
 
 Alternatively 

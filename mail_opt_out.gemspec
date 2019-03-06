@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   spec.test_files = Dir['spec/**/*']
 
-  spec.add_dependency 'rails', '~> 5.2.2'
+  spec.add_dependency 'rails', '~> 4.2.11'
   spec.add_dependency 'jsonapi.rb'
 
   spec.add_development_dependency 'sqlite3', '~> 1.3.6' # https://github.com/rails/rails/pull/35154
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rails_config'
   spec.add_development_dependency 'fabrication'
   spec.add_development_dependency 'ffaker'  
-  spec.add_development_dependency 'with_model'
+  spec.add_development_dependency 'with_model', '~> 2.0.0'
   
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'pry-byebug'

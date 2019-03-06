@@ -1,5 +1,5 @@
 user = User.create!({ name: 'John Doe', email: 'john.doe@example.org '})
-puts("user #{user.name} created!")
+puts("user #{user.name} created! (#{user.id})")
 
 list = MailOptOut::List.create!({ published: false, name: 'Mail opt In Newsletters List', number: '42x', description: "I'd like to subscribe to Mail Opt In newsletter"})
 puts("list #{list.name} created!")

@@ -1,4 +1,4 @@
-class CreateMailOptOutLists < ActiveRecord::Migration[5.2]
+class CreateMailOptOutLists < ActiveRecord::Migration
   def change
     create_table :mail_opt_out_lists do |t|
       t.string :number
