@@ -192,18 +192,27 @@ make sure all tests still passed, and every contribution is covered by test.
 
 ## Todo
 
-- [ ] Put Service on Job
-- [ ] Add Code Doc
-- [ ] Add Generators 
-- [ ] Make configurable email method on User#email
-- [ ] Rake Task to sync existing data with services 
-- [ ] Rake Task to setup, start and cleanup dummy app 
-- [ ] Set FirstName LastName if it possible 
-- [ ] Extract Engine, Gem and Services 
+By Priority 1 low, 5 high
+
+Engine
+- [ ] 1 Add Generators 
+- [ ] 1 Rake Task to sync existing data with services 
+- [ ] 1 Rake Task to setup, start and cleanup dummy app 
+- [ ] 1 Extract Engine, Gem and Services 
 - [ ] mail-opt-out-engine
 - [ ] mail-opt-out-core
 - [ ] mail-opt-out-mailchimp
-- [ ] Rename List#number => List#code
+
+Core 
+- [ ] 1 Rename List#number => List#code
+- [ ] 5 Make List Name Unique on Number Scope
+- [ ] 3 Make configurable email method on User#email
+- [ ] 3 Make configurable User#name, first_name, last_name
+- [ ] 1 Add Code Doc
+
+Services (Mailchimp)
+- [ ] 5 Put Service on Job
+- [ ] 2 Set FirstName LastName if it possible 
 
 ## License
 
