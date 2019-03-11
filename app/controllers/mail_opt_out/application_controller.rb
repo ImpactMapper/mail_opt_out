@@ -3,6 +3,7 @@ require 'jsonapi'
 module MailOptOut
   class ApplicationController < ActionController::API
     include JSONAPI::Errors
+    include JSONAPI::Filtering
 
     [
       ActionController::ParameterMissing,

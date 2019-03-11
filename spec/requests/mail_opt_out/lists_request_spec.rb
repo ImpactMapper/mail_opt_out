@@ -3,8 +3,10 @@ require 'rails_helper'
 module MailOptOut
   RSpec.describe ListsController, type: :request do
     describe 'GET /lists' do
-      let!(:list)  { Fabricate.create(:list, name: 'Notification System', number: '42x', description: 'description') }
-      let(:params) { {} }
+      let!(:list) do
+        Fabricate.create(:list, name: 'Notification System', number: '42x', description: 'description', published: true)
+      end
+      let(:params) { { 'filter[published_eq]' => true } }
 
       subject do
         # routes(Engine.routes, '/')
@@ -123,7 +125,7 @@ module MailOptOut
       end
 
       context 'with a list' do
-        let!(:list)   { Fabricate.create(:list) }
+        let!(:list)   { Fabricate.create(:list, published: true) }
         let(:list_id) { list.id }
 
         let(:params) do
@@ -162,7 +164,7 @@ module MailOptOut
       end
 
       context 'with a list' do
-        let!(:list)   { Fabricate.create(:list, name: 'Notification System') }
+        let!(:list)   { Fabricate.create(:list, name: 'Notification System', published: true) }
         let(:list_id) { list.id }
 
         it do

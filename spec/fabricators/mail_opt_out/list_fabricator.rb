@@ -3,5 +3,6 @@ module MailOptOut
     number      { "#{rand(1000)}" }
     name        { "List #{FFaker::Animal.common_name}" }
     description { FFaker::Lorem.paragraph }
+    published false
   end
 end

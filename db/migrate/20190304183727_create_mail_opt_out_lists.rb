@@ -4,6 +4,7 @@ class CreateMailOptOutLists < ActiveRecord::Migration[5.2]
       t.string :number
       t.string :name
       t.text :description
+      t.boolean :published, default: false
 
       t.timestamps
     end

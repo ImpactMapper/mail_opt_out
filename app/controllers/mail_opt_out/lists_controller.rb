@@ -4,11 +4,15 @@ module MailOptOut
   class ListsController < ApplicationController
     # GET /lists
     def index
-      render jsonapi: List.all
+      allowed = [:published]
+
+      jsonapi_filter(List.all, allowed) do |filtered|
+        render jsonapi: filtered.result
+      end
     end
 
     def show
-      render jsonapi: List.where({ id: params[:id] }).take!
+      render jsonapi: List.active.where({ id: params[:id] }).take!
     end
 
     def create
@@ -22,7 +26,7 @@ module MailOptOut
     end
 
     def update
-      list = List.where({ id: params[:id] }).take!
+      list = List.active.where({ id: params[:id] }).take!
 
       if list.update(update_params)
         render jsonapi: list, status: :ok

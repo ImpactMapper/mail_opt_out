@@ -16,6 +16,7 @@ ActiveRecord::Schema.define do
     t.string :number
     t.string :name
     t.text :description
+    t.boolean :published, default: false
 
     t.timestamps
   end
