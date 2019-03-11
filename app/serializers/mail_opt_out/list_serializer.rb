@@ -4,6 +4,6 @@ module MailOptOut
   class ListSerializer
     include FastJsonapi::ObjectSerializer
 
-    attribute :name, :number
+    attribute :name, :number, :description
   end
 end

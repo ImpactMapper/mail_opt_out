@@ -60,7 +60,6 @@ curl -X DELETE \
 ## Cleanup
 
 find db/migrate/ -name '*mail_opt_out*' -exec rm {} \;
-rm db/
 rm db/development.sqlite3 
 db/schema.rb 
 rm -rf log/*

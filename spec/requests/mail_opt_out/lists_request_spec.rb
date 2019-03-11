@@ -3,7 +3,7 @@ require 'rails_helper'
 module MailOptOut
   RSpec.describe ListsController, type: :request do
     describe 'GET /lists' do
-      let!(:list)  { Fabricate.create(:list, name: 'Notification System', number: '42x') }
+      let!(:list)  { Fabricate.create(:list, name: 'Notification System', number: '42x', description: 'description') }
       let(:params) { {} }
 
       subject do
@@ -20,8 +20,9 @@ module MailOptOut
             'id'   =>  list.id.to_s,
             'type' => 'list',
             'attributes' => {
-              'name'   => 'Notification System',
-              'number' => '42x'
+              'name'        => 'Notification System',
+              'number'      => '42x',
+              'description' => 'description'
              }
           }
         )
