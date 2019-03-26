@@ -45,7 +45,7 @@ module MailOptOut
     private
 
     def create_params
-      params.require(:data).require(:attributes).permit(:name, :number)
+      params.require(:data).require(:attributes).permit(:name, :number, :description, :published)
     end
     alias_method :update_params, :create_params
   end

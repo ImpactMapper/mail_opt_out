@@ -45,7 +45,7 @@ module MailOptOut
 
     def list(name)
       name ||= 'Default List'
-      @list = List.find_or_create_by!({ name: name })
+      @list = List.find_or_create_by!({ name: name, published: true })
     end
 
     def create_params
