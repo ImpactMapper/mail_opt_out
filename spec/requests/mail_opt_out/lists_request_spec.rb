@@ -10,8 +10,8 @@ module MailOptOut
 
       subject do
         # routes(Engine.routes, '/')
-        # get(lists_path, params: params)
-        get '/lists', params: params
+        # get(lists_path, params)
+        get '/lists', params
       end
 
       it do
@@ -36,8 +36,8 @@ module MailOptOut
 
       subject do
         # routes(Engine.routes, '/')
-        # post(lists_path, params: params)
-        post '/lists', params: params
+        # post(lists_path, params)
+        post '/lists', params
       end
 
       context 'without a payload' do
@@ -73,8 +73,8 @@ module MailOptOut
 
       subject do
         # routes(Engine.routes, '/')
-        # delete(list_path(id: list_id), params: params)
-        delete "/lists/#{list_id}", params: params
+        # delete(list_path(id: list_id), params)
+        delete "/lists/#{list_id}", params
       end
 
       context 'without a list' do
@@ -108,8 +108,8 @@ module MailOptOut
 
       subject do
         # routes(Engine.routes, '/')
-        # put(list_path(id: list_id), params: params)
-        put "/lists/#{list_id}", params: params
+        # put(list_path(id: list_id), params)
+        put "/lists/#{list_id}", params
       end
 
       context 'without a list' do
@@ -153,8 +153,8 @@ module MailOptOut
 
       subject do
         # routes(Engine.routes, '/')
-        # get(list_path(id: list_id), params: params)
-        get "/lists/#{list_id}", params: params
+        # get(list_path(id: list_id), params)
+        get "/lists/#{list_id}", params
       end
 
       context 'without a list' do
