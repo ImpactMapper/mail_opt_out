@@ -142,6 +142,8 @@ class CreateMailOptOutLists < ActiveRecord::Migration[5.2]
     create_table :mail_opt_out_lists do |t|
       t.string :number
       t.string :name
+      t.text :description
+      t.boolean :published, default: false
 
       t.timestamps
     end
@@ -184,6 +186,21 @@ Set `ENV['MAILCHIMP_API_KEY']`
 
 To synchronize your Mailchimp list add Rake Task to periodically launch `MailOptOut.sync`
 
+## Configuration 
+
+If you have a different `User` model you define it.
+
+If you to set thrid service as backgound just tick `async = true`
+
+You can add `config/initialize/mail_opt_out.rb`
+
+```
+require 'mail_opt_out'
+
+MailOptOut.user_class = 'User'
+MailOptOut.async = true
+```
+
 ## Contributing
 
 make sure all tests still passed, and every contribution is covered by test.
@@ -211,7 +228,6 @@ Core
 - [ ] 1 Add Code Doc
 
 Services (Mailchimp)
-- [ ] 5 Put Service on Job
 - [ ] 2 Set FirstName LastName if it possible 
 
 ## License
