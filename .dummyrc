@@ -1,0 +1,5 @@
+--database=sqlite3
+--skip-sprockets
+--skip-spring
+--skip-javascript
+--skip-turbolinks
