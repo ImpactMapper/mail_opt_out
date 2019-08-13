@@ -14,4 +14,5 @@ gemspec
 group :test do 
   gem 'gibbon'
   gem 'rspec_junit_formatter'
+  gem 'rspec_api_documentation', github: 'zipmark/rspec_api_documentation'
 end 

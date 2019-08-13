@@ -66,4 +66,12 @@ RSpec::Core::RakeTask.new(spec: :qa) do |t|
   t.pattern =  File.expand_path('../spec/**/*_spec.rb', __FILE__)
 end
 
+require 'rspec/core/rake_task'
+
+desc 'Generate API request documentation from API specs'
+RSpec::Core::RakeTask.new('docs:generate') do |t|
+  t.pattern = 'spec/acceptance/**/*_spec.rb'
+  t.rspec_opts = ["--format RspecApiDocumentation::ApiFormatter"]
+end
+
 task(default: :spec)

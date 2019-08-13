@@ -1,0 +1,46 @@
+FORMAT: 1A
+# API Documentation
+
+# Group Lists
+
+Lists resource
+
+## Get all lists [lists]
+
++ Parameters
+  + published_filter (optional) -  published filter
+
+### Get Lists Collection [GET]
+
++ Request Getting the published lists (application/json)
+
+    + Headers
+
+            Host: example.org
+            Cookie: 
+
++ Response 200 (application/vnd.api+json)
+
+    + Headers
+
+            ETag: W/"15e613dd59c4a8c58ba4de093c8f893e"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: 1c6f9f1b-436e-485c-8e70-6ee822092eab
+            X-Runtime: 0.013136
+            Content-Length: 122
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "1",
+                  "type": "list",
+                  "attributes": {
+                    "name": "Notification System",
+                    "number": "42x",
+                    "description": "description"
+                  }
+                }
+              ]
+            }
